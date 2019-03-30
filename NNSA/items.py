@@ -49,58 +49,29 @@ def remove_black(a):
 def remove_unuse_msg(v):
     v = str(v)
     v = re.sub(r"行政职务：", "", v)
+    v = re.sub(r"排名：", "", v)
     v = re.sub(r"技术职称：", "", v)
     v = re.sub(r"工作单位：", "", v)
     v = re.sub(r"完成项目时所在单位：", "", v)
+    if re.findall(r'对本项目',v):
+        v=' '
     if not v:
         v ='unknown'
     return v
 
 
 class NNSAItem(scrapy.Item):
-    # define the fields for your item here like:
     main_group = scrapy.Field()
-    rank_num = scrapy.Field(
-        # output_processor = MapCompose(int)
-    )
+    rank_num = scrapy.Field()
     project_name = scrapy.Field()
     nomination_unit= scrapy.Field()
-    major1 = scrapy.Field()
-    administrative_duties1 = scrapy.Field( )
-    technical_title1 = scrapy.Field()
-    work_unit1 = scrapy.Field()
-    complete_pro_unit1 = scrapy.Field()
-    all_messeage1 = scrapy.Field()
-    major2 = scrapy.Field()
-    administrative_duties2 = scrapy.Field()
-    technical_title2 = scrapy.Field()
-    work_unit2 = scrapy.Field()
-    complete_pro_unit2 = scrapy.Field()
-    all_messeage2 = scrapy.Field()
-    major3 = scrapy.Field()
-    administrative_duties3 = scrapy.Field()
-    technical_title3 = scrapy.Field()
-    work_unit3 = scrapy.Field()
-    complete_pro_unit3 = scrapy.Field()
-    all_messeage3 = scrapy.Field()
-    major4 = scrapy.Field()
-    administrative_duties4 = scrapy.Field()
-    technical_title4 = scrapy.Field()
-    work_unit4 = scrapy.Field()
-    complete_pro_unit4 = scrapy.Field()
-    all_messeage4 = scrapy.Field()
-    major5 = scrapy.Field()
-    administrative_duties5 = scrapy.Field()
-    technical_title5 = scrapy.Field()
-    work_unit5 = scrapy.Field()
-    complete_pro_unit5 = scrapy.Field()
-    all_messeage5 = scrapy.Field()
-    major6 = scrapy.Field()
-    administrative_duties6 = scrapy.Field()
-    technical_title6 = scrapy.Field()
-    work_unit6 = scrapy.Field()
-    complete_pro_unit6 = scrapy.Field()
-    all_messeage6 = scrapy.Field()
+    major = scrapy.Field()
+    major_rank = scrapy.Field()
+    administrative_duties = scrapy.Field( )
+    technical_title = scrapy.Field()
+    work_unit = scrapy.Field()
+    complete_pro_unit = scrapy.Field()
+    all_messeage = scrapy.Field()
     pass
 
 class NNSAItemLoader(ItemLoader):

@@ -25,7 +25,7 @@ ROBOTSTXT_OBEY = False
 ITEM_PIPELINES = {
    'NNSA.pipelines.NNSAPipeline': 1,
 }
-CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 128
 DOWNLOAD_TIMEOUT=30
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
